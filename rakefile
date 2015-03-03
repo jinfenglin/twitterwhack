@@ -1,0 +1,11 @@
+require './app'
+require 'sinatra/activerecord/rake'
+namespace :log do
+	task :clean_log do
+		if File.exists? './log.txt'
+			sh 'rm ./log.txt'
+		end
+	end
+end
+
+task :clean => ['log:clean_log']
